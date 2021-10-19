@@ -7,27 +7,40 @@
     tools:context=".UserIndex"
     android:background="@drawable/user_dashboard_background">
 
+    <ImageView
+        android:id="@+id/reviewBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_review" />
+
     <TextView
         android:id="@+id/dashboard_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
         android:text="Medi-Check"
         android:textColor="@color/black"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:layout_margin="12dp"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <GridLayout
         android:id="@+id/dashboard_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/dashboard_header"
-        android:layout_marginTop="15dp"
         android:columnCount="2"
-        android:rowCount="3"
-        >
+        android:rowCount="3">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/accountCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -37,7 +50,140 @@
             android:layout_column="0"
             app:cardCornerRadius="0dp"
             app:cardElevation="8dp"
-            android:layout_margin="12dp">
+            android:layout_margin="12dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_account"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/insuranceCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="0"
+            android:layout_column="1"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="8dp"
+            android:layout_margin="12dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_insurance"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Insurance"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contactCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="1"
+            android:layout_column="0"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="8dp"
+            android:layout_margin="12dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_contact"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mediPredictCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="1"
+            android:layout_column="1"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="8dp"
+            android:layout_margin="12dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_medi_predict"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medi-Predict"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 

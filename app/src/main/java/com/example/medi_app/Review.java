@@ -22,7 +22,7 @@ public class Review extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_review);
 
         reviewContent = findViewById(R.id.reviewEditText);
-        insetReviewBtn = findViewById(R.id.reviewBtn);
+        insetReviewBtn = findViewById(R.id.postReviewBtn);
         insetReviewBtn.setOnClickListener(this);
         reviewRatingBar = findViewById(R.id.reviewRatingBar);
 
@@ -31,7 +31,7 @@ public class Review extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.reviewBtn:
+            case R.id.postReviewBtn:
                 String content = reviewContent.getText().toString().trim();
                 int score = reviewRatingBar.getNumStars();
         }
