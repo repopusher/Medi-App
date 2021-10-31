@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.medi_app" >
+    package="com.example.medi_app">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MediApp"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".MediPredict"
+            android:exported="true" />
+        <activity
+            android:name=".Insurance"
+            android:exported="true" />
+        <activity
+            android:name=".Contact"
+            android:exported="true" />
+        <activity
+            android:name=".Account"
+            android:exported="true" />
         <activity
             android:name=".Review"
             android:exported="true" />
@@ -21,7 +33,7 @@
             android:exported="true" />
         <activity
             android:name=".Index"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
