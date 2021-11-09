@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="light_blue">#2196f3</color>
-    <color name="dark_blue">#2962ff</color>
+    <color name="dark_blue">#104b79</color>
     <color name="grey">#607d8b</color>
     <color name="orange">#f37e21</color>
     <color name="black">#263238</color>

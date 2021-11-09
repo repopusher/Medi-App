@@ -11,6 +11,9 @@
         android:theme="@style/Theme.MediApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".register2"
+            android:exported="true" />
+        <activity
             android:name=".MediPredict"
             android:exported="true" />
         <activity

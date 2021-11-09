@@ -1,3 +1,4 @@
+// Tobias Lennon
 package com.example.medi_app;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +27,7 @@ public class Account extends AppCompatActivity {
         accountLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                
             }
         });
     }

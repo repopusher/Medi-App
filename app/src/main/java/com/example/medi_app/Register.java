@@ -139,6 +139,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                     if(registerTask.isSuccessful()){
                                         registerProgressBar.setVisibility(View.GONE);
                                         Toast.makeText(Register.this, "Successfully registered", Toast.LENGTH_LONG).show();
+
                                         Intent switchActivity = new Intent(Register.this, Index.class);
                                         startActivity(switchActivity);
                                     }
