@@ -1,5 +1,6 @@
 package com.example.medi_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,10 +12,15 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
-
 import com.example.medi_app.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
@@ -63,12 +69,19 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     //Validation is successful, call createUser() and pass return value into registerUser to authenticate and insert user into database.
                     int age = Integer.parseInt(regAge);
                     User user = createUser(regEmail, regForename, regSurname, regSex, age);
-                    registerUser(regEmail, regPassword, user);
+
+                    Intent nextReg = new Intent(Register.this, register2.class);
+
+                    nextReg.putExtra("user", user);
+                    startActivity(nextReg);
+
+//                    registerUser(regEmail, regPassword, user);
                 }
                 break;
 
         }
     }
+
     //Method validates all the fields the patient inputs.
     private Boolean validateRegister(String regEmail, String regPassword, String regForename, String regSurname, String regSex, String regAge){
 
@@ -137,6 +150,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         database.getReference("Patients").child(FirebaseAuth.getInstance().getCurrentUser()
                                 .getUid()).setValue(patient).addOnCompleteListener(registerTask -> {
                                     if(registerTask.isSuccessful()){
+
                                         registerProgressBar.setVisibility(View.GONE);
                                         Toast.makeText(Register.this, "Successfully registered", Toast.LENGTH_LONG).show();
 
@@ -159,8 +173,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    //Method instantiates and returns User object.
+    //Method instantiates and returns User object with empty healthInsurance field.
     public User createUser(String registerEmail, String registerForename, String registerSurname, String registerSex, int registerAge ){
-        return new User(registerEmail, registerForename, registerSurname, registerSex, registerAge);
+        return new User(registerEmail, registerForename, registerSurname, registerSex, registerAge, "", "");
     }
 }

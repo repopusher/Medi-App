@@ -16,4 +16,24 @@
     <string name="contact">Contact</string>
     <string name="medi_predict">Medi-Predict</string>
     <string name="title_activity_register2">register2</string>
+    <string name="choose_your_insurance_company">Choose your insurance company</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="age">Age</string>
+    <string name="surname">Surname</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="email">Email</string>
+    <string name="firstname">Firstname</string>
+    <string name="choose_your_general_practitioner">Choose your general practitioner</string>
+    <string-array name="health_insurance">
+        <item>Laya Healthcare</item>
+        <item>Vhi Healthcare</item>
+        <item>Chill Insurance</item>
+        <item>Aviva Insurance Ireland</item>
+        <item>Irish Life Health</item>
+        <item>AIG Ireland</item>
+        <item>McCarthy Insurance Group</item>
+        <item>Acorn Insurance</item>
+    </string-array>
 </resources>
