@@ -1,6 +1,8 @@
+//Tobias Lennon
 package com.example.medi_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -22,18 +24,18 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
 
-        mAuth = FirebaseAuth.getInstance();
         Button indexRegisterBtn = findViewById(R.id.indexRegisterBtn);
+        Button indexLoginBtn    = findViewById(R.id.indexLoginBtn);
+        loginEmail              = findViewById(R.id.indexEmail);
+        loginPassword           = findViewById(R.id.indexPassword);
+        indexProgressBar        = findViewById(R.id.indexProgressBar);
+        mAuth                   = FirebaseAuth.getInstance();
+
         indexRegisterBtn.setOnClickListener(this);
-        Button indexLoginBtn = findViewById(R.id.indexLoginBtn);
         indexLoginBtn.setOnClickListener(this);
-        loginEmail = findViewById(R.id.indexEmail);
-        loginPassword = findViewById(R.id.indexPassword);
-        indexProgressBar = findViewById(R.id.indexProgressBar);
-
-
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -55,6 +57,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    //Logs a user in.
     private void loginUser(String logEmail, String logPass) {
 
         indexProgressBar.setVisibility(View.VISIBLE);
@@ -69,6 +72,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         });
     }
 
+    //Validates user input details.
     private Boolean validateLogin(String logEmail, String logPass) {
 
         if(logEmail.isEmpty()){

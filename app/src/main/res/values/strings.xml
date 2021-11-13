@@ -26,6 +26,16 @@
     <string name="email">Email</string>
     <string name="firstname">Firstname</string>
     <string name="choose_your_general_practitioner">Choose your general practitioner</string>
+    <string name="contract_length">Contract length:</string>
+    <string name="number">number</string>
+    <string name="months">months</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="edit">Edit</string>
+    <string name="insurance_general_practitioner">Insurance/General Practitioner</string>
+    <string name="write_message_here">Write message here...</string>
+    <string name="send">Send</string>
+    <string name="phone">Phone</string>
+    <string name="send_message">Send Message</string>
     <string-array name="health_insurance">
         <item>Laya Healthcare</item>
         <item>Vhi Healthcare</item>

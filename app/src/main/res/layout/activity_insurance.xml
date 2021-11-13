@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Insurance">
+    tools:context=".Insurance"
+    android:orientation="vertical"
+    android:padding="12dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/insuranceHeading"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:text="@string/insurance"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/insuranceHeading"
+        android:columnCount="3"
+        android:rowCount="2">
+
+        <TextView
+            android:id="@+id/contactLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:padding="8dp"
+            android:text="@string/contract_length"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/insuranceContract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:padding="8dp"
+            android:text="@string/number"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/monthsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:padding="8dp"
+            android:text="@string/months"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/monthlyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:padding="8dp"
+            android:text="Monthly payment:         €"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/insuranceMonthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:padding="8dp"
+            android:text="@string/number"
+            android:textSize="18sp" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/makePaymentBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gridLayout"
+        android:text="@string/make_payment"/>
+
+    <Button
+        android:id="@+id/editInsuranceBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/makePaymentBtn"
+        android:text="@string/edit"/>
+
+
+</RelativeLayout>
