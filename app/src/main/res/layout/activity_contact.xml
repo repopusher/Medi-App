@@ -1,54 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Contact"
+    android:orientation="vertical"
     android:padding="12dp"
-    android:orientation="vertical">
+    tools:context=".Contact">
 
-   <TextView
-       android:layout_marginTop="12dp"
-       android:id="@+id/textViewContact"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/insurance_general_practitioner"
-       android:layout_marginBottom="4dp"/>
+    <TextView
+        android:id="@+id/textViewContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/insurance_general_practitioner" />
 
-   <Spinner
-       android:id="@+id/spinnerContact"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/textViewContact"
-       android:padding="12dp"
-       android:textAlignment="center"
-       android:layout_marginBottom="12dp"/>
+    <Spinner
+        android:id="@+id/spinnerContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewContact"
+        android:layout_marginBottom="12dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-   <EditText
-       android:id="@+id/editTextContact"
-       android:layout_width="match_parent"
-       android:layout_height="250dp"
-       android:layout_below="@+id/spinnerContact"
-       android:hint="@string/write_message_here"
-       android:gravity="top"
-       android:autofillHints="Write message here..."
-       android:inputType="text"
-       android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editTextSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerContact"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="Subject"
+        android:hint="@string/subject"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp" />
 
-   <Button
-       android:id="@+id/sendContactBtn"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/editTextContact"
-       android:text="@string/send_message"
-       android:layout_marginBottom="12dp"/>
+    <EditText
+        android:id="@+id/editTextContact"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@+id/editTextSubject"
+        android:layout_marginBottom="4dp"
+        android:autofillHints="Write message here..."
+        android:gravity="top"
+        android:hint="@string/write_message_here"
+        android:inputType="textEmailSubject"
+        android:padding="8dp" />
 
-   <Button
-       android:id="@+id/callContactBtn"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/sendContactBtn"
-       android:text="@string/phone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextContact"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sendContactBtn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:padding="10dp"
+            android:text="@string/send_email"
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/callContactIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/image_of_phone"
+            android:src="@drawable/ic_phone" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

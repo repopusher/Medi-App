@@ -36,6 +36,9 @@
     <string name="send">Send</string>
     <string name="phone">Phone</string>
     <string name="send_message">Send Message</string>
+    <string name="subject">Subject</string>
+    <string name="send_email">Send Email</string>
+    <string name="image_of_phone">Image of phone</string>
     <string-array name="health_insurance">
         <item>Laya Healthcare</item>
         <item>Vhi Healthcare</item>
