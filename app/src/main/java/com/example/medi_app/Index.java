@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -18,6 +19,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
     private EditText loginEmail, loginPassword;
     private ProgressBar indexProgressBar;
     private FirebaseAuth mAuth;
+    private Switch switchLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         loginEmail              = findViewById(R.id.indexEmail);
         loginPassword           = findViewById(R.id.indexPassword);
         indexProgressBar        = findViewById(R.id.indexProgressBar);
+        switchLogin             = findViewById(R.id.switchIndex);
         mAuth                   = FirebaseAuth.getInstance();
 
         indexRegisterBtn.setOnClickListener(this);
@@ -51,25 +54,42 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
                 Boolean validated = validateLogin(logEmail, logPass);
 
                 if(validated){
-                    loginUser(logEmail, logPass);
+                    loginUser(logEmail, logPass, switchLogin);
                 }
                 
         }
     }
 
     //Logs a user in.
-    private void loginUser(String logEmail, String logPass) {
+    private void loginUser(String logEmail, String logPass, Switch switchLogin) {
 
         indexProgressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(logEmail, logPass).addOnCompleteListener(loginTask -> {
             if(loginTask.isSuccessful()){
-                startActivity(new Intent(Index.this, UserIndex.class));
+                //GP logging in
+                if(switchLogin.isChecked()){
+                    Toast.makeText(this,"Enter the GP relm", Toast.LENGTH_SHORT).show();
+                    Boolean isGP = validateGP(mAuth.getCurrentUser().getUid());
+                    if(isGP){
+                        startActivity(new Intent(Index.this, GP_dash.class));
+                    }
+                }
+                //Patient logging in
+                else {
+                    startActivity(new Intent(Index.this, UserIndex.class));
+                }
             }
             else{
                 Toast.makeText(Index.this, "Failed to login! Check details.", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private Boolean validateGP(String uid) {
+
+
+        return true;
     }
 
     //Validates user input details.

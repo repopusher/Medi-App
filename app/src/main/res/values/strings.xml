@@ -6,7 +6,6 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="review_goes_here">Review goes here</string>
@@ -17,13 +16,10 @@
     <string name="medi_predict">Medi-Predict</string>
     <string name="title_activity_register2">register2</string>
     <string name="choose_your_insurance_company">Choose your insurance company</string>
-    <string name="register">Register</string>
-    <string name="password">Password</string>
     <string name="age">Age</string>
     <string name="surname">Surname</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="email">Email</string>
     <string name="firstname">Firstname</string>
     <string name="choose_your_general_practitioner">Choose your general practitioner</string>
     <string name="contract_length">Contract length:</string>
@@ -39,6 +35,14 @@
     <string name="subject">Subject</string>
     <string name="send_email">Send Email</string>
     <string name="image_of_phone">Image of phone</string>
+    <string name="patient_gp">Patient/GP</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="welcome_to_medi_check">Welcome to Medi-Check</string>
+    <string name="your_patients">Your patients:</string>
     <string-array name="health_insurance">
         <item>Laya Healthcare</item>
         <item>Vhi Healthcare</item>

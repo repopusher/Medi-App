@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.medi_app">
+    package="com.example.medi_app" >
+
+    <uses-permission
+        android:name="android.permission.CALL_PHONE"
+        tools:ignore="ManifestOrder" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MediApp"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".GP_dash"
+            android:exported="true" />
         <activity
             android:name=".register2"
             android:exported="true" />
@@ -37,7 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".Index"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,8 +52,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.CALL_PHONE"
-        tools:ignore="ManifestOrder" />
 
 </manifest>

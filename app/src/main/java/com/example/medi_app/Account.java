@@ -11,7 +11,7 @@ import android.widget.ListView;
 public class Account extends AppCompatActivity {
 
     ListView accountLv;
-    String[] optionList = {"Details", "Health Insurance"};
+    String[] optionList = {"Logout"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,8 @@ public class Account extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.account_adapter, R.id.accountTextView, optionList);
         accountLv.setAdapter(adapter);
 
-        accountLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                
-            }
+        accountLv.setOnItemClickListener((adapterView, view, i, l) -> {
+
         });
     }
 }

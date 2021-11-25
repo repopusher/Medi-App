@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/doc"
     tools:context=".UserIndex">
 
     <ImageView
@@ -25,7 +24,7 @@
         android:padding="12dp"
         android:layout_marginStart="120dp"
         android:text="@string/medi_check"
-        android:textColor="@color/white"
+        android:textColor="@color/grey"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -47,8 +46,9 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="12dp"
-            android:backgroundTint="@color/dark_blue"
-            app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardCornerRadius="0dp"
+            android:elevation="8dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/account"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -83,8 +83,9 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="12dp"
-            android:backgroundTint="@color/dark_blue"
-            app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardCornerRadius="0dp"
+            android:elevation="8dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -103,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/insurance"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -119,8 +120,9 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="12dp"
-            android:backgroundTint="@color/dark_blue"
-            app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardCornerRadius="0dp"
+            android:elevation="8dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -139,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/contact"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -155,8 +157,9 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="12dp"
-            android:backgroundTint="@color/dark_blue"
-            app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardCornerRadius="0dp"
+            android:elevation="8dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -175,7 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/medi_predict"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
