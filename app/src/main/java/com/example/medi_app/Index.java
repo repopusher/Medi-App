@@ -1,10 +1,12 @@
 //Tobias Lennon
 package com.example.medi_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +15,22 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class Index extends AppCompatActivity implements View.OnClickListener{
 
     private EditText loginEmail, loginPassword;
     private ProgressBar indexProgressBar;
     private FirebaseAuth mAuth;
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://medi-check-76263-default-rtdb.europe-west1.firebasedatabase.app/");
     private Switch switchLogin;
+    private Boolean validGP = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +80,35 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
             if(loginTask.isSuccessful()){
                 //GP logging in
                 if(switchLogin.isChecked()){
-                    Toast.makeText(this,"Enter the GP relm", Toast.LENGTH_SHORT).show();
-                    Boolean isGP = validateGP(mAuth.getCurrentUser().getUid());
-                    if(isGP){
-                        startActivity(new Intent(Index.this, GP_dash.class));
-                    }
+
+                    validateGP(mAuth.getCurrentUser().getUid(), new OnGetDataListener() {
+                        @Override
+                        public void onSuccess(DataSnapshot dataSnapshot) {
+                            Boolean toggle = false;
+                            for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                if (mAuth.getCurrentUser().getUid().equals(snapshot.getKey())) {
+                                    toggle = true;
+                                }
+                            }
+
+                            if(toggle){
+                                startActivity(new Intent(Index.this, GP_dash.class));
+                            }
+                            else{
+                                indexProgressBar.setVisibility(View.GONE);
+                                loginEmail.setError("Not a medical professional.");
+                                loginEmail.requestFocus();
+                            }
+                        }
+
+                        @Override
+                        public void onStart() {
+                        }
+
+                        @Override
+                        public void onFailure() {
+                        }
+                    });
                 }
                 //Patient logging in
                 else {
@@ -86,10 +121,27 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         });
     }
 
-    private Boolean validateGP(String uid) {
+    public interface OnGetDataListener{
+        void onSuccess(DataSnapshot dataSnapshot);
+        void onStart();
+        void onFailure();
+    }
 
+    private void validateGP(String uid, final OnGetDataListener listener) {
+        listener.onStart();
+        DatabaseReference myRef = database.getReference().child("GPs");
 
-        return true;
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listener.onSuccess(snapshot);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                listener.onFailure();
+            }
+        });
     }
 
     //Validates user input details.

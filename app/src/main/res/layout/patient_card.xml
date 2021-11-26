@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     android:backgroundTint="@color/light_blue"
-    app:cardCornerRadius="0dp">
+    app:cardCornerRadius="0dp"
+    android:layout_gravity="left"
+    tools:ignore="RtlHardcoded">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,21 +20,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="left">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="Name: "
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/patientName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/account"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
 
         </LinearLayout>
 
@@ -39,21 +45,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="left">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Age:    "
+                android:text="Age:"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/patientAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/account"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
 
         </LinearLayout>
 
@@ -61,21 +70,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="left">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Sex:     "
+                android:text="Sex:"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/patientSex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/account"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
 
         </LinearLayout>
 

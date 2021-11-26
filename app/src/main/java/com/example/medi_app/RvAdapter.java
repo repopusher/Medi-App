@@ -1,5 +1,6 @@
 package com.example.medi_app;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,10 +31,12 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User patient = list.get(position);
-        holder.name.setText(patient.getForename());
+        String patientName = patient.getForename() + " " + patient.getSurname();
+        holder.name.setText(patientName);
         holder.age.setText(Integer.toString(patient.getAge()));
         holder.sex.setText(patient.getSex());
     }

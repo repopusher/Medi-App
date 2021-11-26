@@ -1,10 +1,12 @@
 package com.example.medi_app;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,10 +64,31 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
         readDatabase("GPs");
     }
 
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(UserIndex.this);
+        builder.setTitle("Logout");
+        builder.setMessage("Are you sure you want to logout?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mAuth.signOut();
+                startActivity(new Intent(UserIndex.this, Index.class));
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        builder.create().show();
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.reviewBtn:
                 startActivity(new Intent(UserIndex.this, Review.class));
                 break;
@@ -73,14 +96,14 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
                 startActivity(new Intent(UserIndex.this, Account.class));
                 break;
             case R.id.insuranceCard:
-                if(patientInsurance != null) {
+                if (patientInsurance != null) {
                     Intent insuranceIntent = new Intent(this, Insurance.class);
                     insuranceIntent.putExtra("Insurance", patientInsurance);
                     startActivity(insuranceIntent);
                 }
                 break;
             case R.id.contactCard:
-                if(patientInsurance != null && patientGP != null) {
+                if (patientInsurance != null && patientGP != null) {
                     Intent contactIntent = new Intent(this, Contact.class);
                     contactIntent.putExtra("GP", patientGP);
                     contactIntent.putExtra("Insurance", patientInsurance);
@@ -91,7 +114,6 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
                 startActivity(new Intent(UserIndex.this, MediPredict.class));
         }
     }
-
 
 
     private void readDatabase(String branch) {
