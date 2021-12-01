@@ -32,6 +32,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         registerPassword    = findViewById(R.id.registerPassword);
 
         registerBtn.setOnClickListener(this);
+
     }
 
     @Override

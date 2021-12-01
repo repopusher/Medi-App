@@ -11,12 +11,12 @@
     <TextView
         android:id="@+id/insuranceHeading"
         android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
         android:text="@string/insurance"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="12dp"/>
+        android:textStyle="bold" />
 
     <GridLayout
         android:id="@+id/gridLayout"
@@ -91,6 +91,70 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/makePaymentBtn"
         android:text="@string/edit"/>
+
+    <TextView
+        android:id="@+id/medi_coin_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editInsuranceBtn"
+        android:layout_marginTop="20dp"
+        android:text="Purchase MediCoin"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/select_coin_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/medi_coin_title"
+        android:orientation='horizontal'>
+
+
+            <RadioButton
+                android:id="@+id/radio_medi_coin_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/purchase_medi_coin_500" />
+
+            <RadioButton
+                android:id="@+id/radio_medi_coin_1000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/purchase_medi_coin_1000" />
+
+            <RadioButton
+                android:id="@+id/radio_medi_coin_2000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/purchase_medi_coin_2000" />
+
+            <RadioButton
+                android:id="@+id/radio_medi_coin_5000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/purchase_medi_coin_5000" />
+
+            <RadioButton
+                android:id="@+id/radio_medi_coin_10000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/purchase_medi_coin_10000" />
+    </RadioGroup>
+
+    <com.paypal.checkout.paymentbutton.PayPalButton
+        android:id="@+id/payPalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_coin_amount"
+        android:layout_marginTop="30dp"
+        android:text="PayPal"
+        />
 
 
 </RelativeLayout>

@@ -6,6 +6,8 @@
     <uses-permission
         android:name="android.permission.CALL_PHONE"
         tools:ignore="ManifestOrder" />
+    <uses-permission
+        android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -17,38 +19,74 @@
         android:usesCleartextTraffic="true" >
         <activity
             android:name=".GP_dash"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".register2"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".MediPredict"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".Insurance"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".Contact"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".Account"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".Review"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".UserIndex"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".Register"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".Index"
-            android:exported="true" >
+            android:exported="true"
+            tools:node="merge">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.paypal.openid.RedirectUriReceiverActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/PYPLAppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="paypalpay"
+                    android:scheme="com.example.medi.app" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.paypal.pyplcheckout.home.view.activities.PYPLInitiateCheckoutActivity"
+            android:theme="@style/AppFullScreenTheme">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="paypalxo"
+                    android:scheme="com.example.medi.app" />
             </intent-filter>
         </activity>
     </application>

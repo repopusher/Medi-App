@@ -43,6 +43,11 @@
     <string name="email">Email</string>
     <string name="welcome_to_medi_check">Welcome to Medi-Check</string>
     <string name="your_patients">Your patients:</string>
+    <string name="purchase_medi_coin_500">500</string>
+    <string name="purchase_medi_coin_1000">1000</string>
+    <string name="purchase_medi_coin_2000">2000</string>
+    <string name="purchase_medi_coin_5000">5000</string>
+    <string name="purchase_medi_coin_10000">10000</string>
     <string-array name="health_insurance">
         <item>Laya Healthcare</item>
         <item>Vhi Healthcare</item>
