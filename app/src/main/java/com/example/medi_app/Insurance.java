@@ -49,7 +49,11 @@ public class Insurance extends AppCompatActivity {
         tvMonthly.setText(String.valueOf(insurance.getMonthly()));
 
         payPalButton = findViewById(R.id.payPalButton);
+
+
+        // ====================================
         // PayPal
+        // ====================================
         CheckoutConfig config = new CheckoutConfig(
                 getApplication(),
                 "AQNDWqdzYC3Rr9B96ZMC7osJxtH5cn5nhhjy8by_mIH22ezisg0YSC7c0zLoB7Pach5ke6s2pvRQmttY",
@@ -66,57 +70,38 @@ public class Insurance extends AppCompatActivity {
 
         payPalButton.setup(
 
-                new CreateOrder() {
+                createOrderActions -> {
 
-                    @Override
+                    ArrayList purchaseUnits = new ArrayList<>();
 
-                    public void create(@NotNull CreateOrderActions createOrderActions) {
+                    purchaseUnits.add(
+                            new PurchaseUnit.Builder()
+                                    .amount(
+                                            new Amount.Builder()
+                                                    .currencyCode(CurrencyCode.EUR)
+                                                    .value("10.00")
+                                                    .build()
+                                    )
+                                    .build()
+                    );
 
-                        ArrayList purchaseUnits = new ArrayList<>();
-
-                        purchaseUnits.add(
-                                new PurchaseUnit.Builder()
-                                        .amount(
-                                                new Amount.Builder()
-                                                        .currencyCode(CurrencyCode.EUR)
-                                                        .value("10.00")
-                                                        .build()
-                                        )
-                                        .build()
-                        );
-
-                        Order order = new Order(
-                                OrderIntent.CAPTURE,
-                                new AppContext.Builder()
-                                        .userAction(UserAction.PAY_NOW)
-                                        .build(),
-                                purchaseUnits
-                        );
-                        createOrderActions.create(order, (CreateOrderActions.OnOrderCreated) null);
-                    }
+                    Order order = new Order(
+                            OrderIntent.CAPTURE,
+                            new AppContext.Builder()
+                                    .userAction(UserAction.PAY_NOW)
+                                    .build(),
+                            purchaseUnits
+                    );
+                    createOrderActions.create(order, (CreateOrderActions.OnOrderCreated) null);
                 },
 
-                new OnApprove() {
+                approval -> approval.getOrderActions().capture(result -> {
 
-                    @Override
+                    Log.i("CaptureOrder", String.format("CaptureOrderResult: %s", result));
+                    System.out.println("Hello there");
 
-                    public void onApprove(@NotNull Approval approval) {
+                })
 
-                        approval.getOrderActions().capture(new OnCaptureComplete() {
-
-                            @Override
-
-                            public void onCaptureComplete(@NotNull CaptureOrderResult result) {
-
-                                Log.i("CaptureOrder", String.format("CaptureOrderResult: %s", result));
-
-                            }
-
-                        });
-
-                    }
-
-                }
 
         );
     }
