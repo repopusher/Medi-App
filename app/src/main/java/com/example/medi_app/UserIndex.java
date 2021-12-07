@@ -11,14 +11,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.medi_app.model.Form;
 import com.example.medi_app.model.GP;
 import com.example.medi_app.model.InsuranceCompany;
-import com.example.medi_app.model.ReviewClass;
 import com.example.medi_app.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +36,7 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
     private User patient;
     private GP patientGP;
     private InsuranceCompany patientInsurance;
+    private Form patientForm;
 
 
     @Override
@@ -62,6 +61,7 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
         readDatabase("Patients");
         readDatabase("Insurance");
         readDatabase("GPs");
+        readForm();
     }
 
     @Override
@@ -111,7 +111,14 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
                 }
                 break;
             case R.id.mediPredictCard:
-                startActivity(new Intent(UserIndex.this, MediPredict.class));
+                if (patientForm != null) {
+                    Intent intent = new Intent(UserIndex.this, MediPredict.class);
+                    intent.putExtra("patientForm", patientForm);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(this, "GP has not filled out your form yet.", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 
@@ -150,6 +157,29 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
             public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
                 Log.w("ERROR\t", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    private void readForm() {
+        DatabaseReference myRef = database.getReference("Forms");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    if (Objects.equals(dataSnapshot.child("patient").getValue(), mAuth.getUid())) {
+                        patientForm = dataSnapshot.getValue(Form.class);
+                    }
+                    else {
+                        Toast.makeText(UserIndex.this, "Please contact your GP and ask them to fill out your forms.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
