@@ -10,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class GP_dash extends AppCompatActivity {
+public class GP_dash extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView rv;
     private DatabaseReference database;
@@ -35,11 +37,14 @@ public class GP_dash extends AppCompatActivity {
     private ArrayList<User> list;
     private FirebaseAuth mAuth;
     private TextView header;
+    private ImageView logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gp_dash);
+
+        logoutBtn = findViewById(R.id.logoutBtn1);
         header = findViewById(R.id.GPusername);
         mAuth = FirebaseAuth.getInstance();
         rv = findViewById(R.id.recyclerViewGP);
@@ -47,6 +52,7 @@ public class GP_dash extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+        logoutBtn.setOnClickListener(this);
         header.setText("Doctor");
         list = new ArrayList<>();
         mAdapter = new RvAdapter(this, list);
@@ -93,5 +99,14 @@ public class GP_dash extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.logoutBtn1:
+                onBackPressed();
+                break;
+        }
     }
 }
