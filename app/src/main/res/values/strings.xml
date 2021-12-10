@@ -48,6 +48,7 @@
     <string name="purchase_medi_coin_2000">2000</string>
     <string name="purchase_medi_coin_5000">5000</string>
     <string name="purchase_medi_coin_10000">10000</string>
+    <string name="medicoinAddressField">Address</string>
     <string-array name="health_insurance">
         <item>Laya Healthcare</item>
         <item>Vhi Healthcare</item>

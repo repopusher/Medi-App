@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editInsuranceBtn"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Purchase MediCoin"
         android:textAlignment="center"
         android:textSize="20dp"
@@ -147,14 +147,25 @@
                 android:text="@string/purchase_medi_coin_10000" />
     </RadioGroup>
 
+    <EditText
+        android:id="@+id/userAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_coin_amount"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/medicoinAddressField" />
+
     <com.paypal.checkout.paymentbutton.PayPalButton
         android:id="@+id/payPalButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/select_coin_amount"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/userAddress"
+        android:layout_marginTop="20dp"
         android:text="PayPal"
         />
+
+
 
 
 </RelativeLayout>
