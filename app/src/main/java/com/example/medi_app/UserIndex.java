@@ -29,7 +29,7 @@ import java.util.Objects;
 
 public class UserIndex extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView reviewBtn;
+    private ImageView reviewBtn, logoutBtn;
     private CardView accountBtn, insuranceBtn, contactBtn, mediPredictBtn;
     private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://medi-check-76263-default-rtdb.europe-west1.firebasedatabase.app/");
     private FirebaseAuth mAuth;
@@ -45,6 +45,7 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_user_index);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        logoutBtn = findViewById(R.id.logoutBtn);
         reviewBtn = findViewById(R.id.reviewBtn);
         accountBtn = findViewById(R.id.accountCard);
         insuranceBtn = findViewById(R.id.insuranceCard);
@@ -57,6 +58,7 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
         contactBtn.setOnClickListener(this);
         accountBtn.setOnClickListener(this);
         reviewBtn.setOnClickListener(this);
+        logoutBtn.setOnClickListener(this);
 
         readDatabase("Patients");
         readDatabase("Insurance");
@@ -119,6 +121,10 @@ public class UserIndex extends AppCompatActivity implements View.OnClickListener
                 else {
                     Toast.makeText(this, "GP has not filled out your form yet.", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.logoutBtn:
+                onBackPressed();
+                break;
         }
     }
 
