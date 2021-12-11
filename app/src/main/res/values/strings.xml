@@ -48,6 +48,7 @@
     <string name="purchase_medi_coin_2000">2000</string>
     <string name="purchase_medi_coin_5000">5000</string>
     <string name="purchase_medi_coin_10000">10000</string>
+    <string name="medicoinAddressField">Address</string>
     <string name="loading">Loading...</string>
     <string name="diabetes_risk_factor">Diabetes risk factor:</string>
     <string name="alzheimer_s_risk_factor">Alzheimer\'s risk factor:</string>
