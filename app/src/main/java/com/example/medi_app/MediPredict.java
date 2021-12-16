@@ -150,6 +150,12 @@ public class MediPredict extends AppCompatActivity {
                 float[] fb = output.array();
                 Log.d("RESULT", String.valueOf(fb[0]));
                 Log.d("RESULT", "Alzheimer's ^");
+                if (fb[0] < 0.5) {
+                    alzheimersRes.setText("😀");
+                }
+                else {
+                    alzheimersRes.setText("😟");
+                }
                 interpreter.close();
                 input.clear();
                 output.clear();
