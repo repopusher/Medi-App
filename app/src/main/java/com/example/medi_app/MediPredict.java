@@ -4,6 +4,7 @@ package com.example.medi_app;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.medi_app.model.Form;
 import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions;
@@ -15,16 +16,19 @@ import java.nio.FloatBuffer;
 
 public class MediPredict extends AppCompatActivity {
 
-    private CustomModelDownloadConditions conditions;
-    private Form patientForm;
-    private Interpreter interpreter;
+    TextView diabetesRes, heartRes, alzheimersRes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medi_predict);
 
+        diabetesRes = findViewById(R.id.diabetes);
+        heartRes = findViewById(R.id.heartDisease);
+        alzheimersRes = findViewById(R.id.alzheimers);
+
         //PatientForm has all form for AIs, just use .getWhatever()
-        patientForm = getIntent().getExtras().getParcelable("patientForm");
+        Form patientForm = getIntent().getExtras().getParcelable("patientForm");
 
         float[] diabetesInput = {patientForm.getPregnancies(), patientForm.getGlucose(), patientForm.getBloodPressure(), patientForm.getSkinThickness(), patientForm.getInsulin(), patientForm.getBmi(), patientForm.getDiabetesPedigreeFunction(), patientForm.getAge()};
         float[] heartDiseaseInput = {patientForm.getZero(), patientForm.getOne(), patientForm.getTwo(), patientForm.getThree(), patientForm.getFour(), patientForm.getFive(), patientForm.getSix(), patientForm.getSeven(), patientForm.getEight(), patientForm.getNine(), patientForm.getTen(), patientForm.getEleven(), patientForm.getTwelve()};
@@ -62,6 +66,12 @@ public class MediPredict extends AppCompatActivity {
                 float[] fb = output.array();
                 Log.d("RESULT", String.valueOf(fb[0]));
                 Log.d("RESULT", "Diabetes ^");
+                if (fb[0] < 0.5) {
+                    diabetesRes.setText("😁");
+                }
+                else {
+                    diabetesRes.setText("😟");
+                }
                 interpreter.close();
                 input.clear();
                 output.clear();
@@ -100,6 +110,12 @@ public class MediPredict extends AppCompatActivity {
                     float[] fb = output.array();
                     Log.d("RESULT", String.valueOf(fb[0]));
                     Log.d("RESULT", "Heart Disease ^");
+                    if (fb[0] < 0.5) {
+                        heartRes.setText("😀");
+                    }
+                    else {
+                        heartRes.setText("😟");
+                    }
                     interpreter.close();
                     input.clear();
                     output.clear();
