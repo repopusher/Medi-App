@@ -1,22 +1,32 @@
 //Tobias Lennon X Brian Murphy
 package com.example.medi_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.medi_app.model.Form;
+import com.example.medi_app.model.Prediction;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions;
 import com.google.firebase.ml.modeldownloader.DownloadType;
 import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader;
 import org.tensorflow.lite.Interpreter;
 import java.io.File;
 import java.nio.FloatBuffer;
+import java.util.Objects;
 
 public class MediPredict extends AppCompatActivity {
 
     TextView diabetesRes, heartRes, alzheimersRes;
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://medi-check-76263-default-rtdb.europe-west1.firebasedatabase.app/");
+    private FirebaseAuth mAuth;
+    private Prediction prediction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,9 @@ public class MediPredict extends AppCompatActivity {
         diabetesRes = findViewById(R.id.diabetes);
         heartRes = findViewById(R.id.heartDisease);
         alzheimersRes = findViewById(R.id.alzheimers);
+        mAuth         = FirebaseAuth.getInstance();
+        prediction = new Prediction();
+
 
         //PatientForm has all form for AIs, just use .getWhatever()
         Form patientForm = getIntent().getExtras().getParcelable("patientForm");
@@ -34,11 +47,9 @@ public class MediPredict extends AppCompatActivity {
         float[] heartDiseaseInput = {patientForm.getZero(), patientForm.getOne(), patientForm.getTwo(), patientForm.getThree(), patientForm.getFour(), patientForm.getFive(), patientForm.getSix(), patientForm.getSeven(), patientForm.getEight(), patientForm.getNine(), patientForm.getTen(), patientForm.getEleven(), patientForm.getTwelve()};
         float[] alzheimerInput = {patientForm.getGender(), patientForm.getHand(), patientForm.getAge(), patientForm.getEduc(), patientForm.getSes(), patientForm.getMmse(), patientForm.getEtiv(), patientForm.getNwbv(), patientForm.getAsf()};
 
-        float[] altInput = {0, 1, 34, 5, 1, 29, 1647, (float) 0.721, (float) 1.066};
-
         diabetesAi(diabetesInput);
         heartDiseaseAi(heartDiseaseInput);
-        alzheimersAi(altInput);
+        alzheimersAi(alzheimerInput);
 
     }
 
@@ -66,6 +77,7 @@ public class MediPredict extends AppCompatActivity {
                 float[] fb = output.array();
                 Log.d("RESULT", String.valueOf(fb[0]));
                 Log.d("RESULT", "Diabetes ^");
+                prediction.setDiabetes(fb[0]);
                 if (fb[0] < 0.5) {
                     diabetesRes.setText("😁");
                 }
@@ -110,6 +122,7 @@ public class MediPredict extends AppCompatActivity {
                     float[] fb = output.array();
                     Log.d("RESULT", String.valueOf(fb[0]));
                     Log.d("RESULT", "Heart Disease ^");
+                    prediction.setHeartDisease(fb[0]);
                     if (fb[0] < 0.5) {
                         heartRes.setText("😀");
                     }
@@ -150,12 +163,16 @@ public class MediPredict extends AppCompatActivity {
                 float[] fb = output.array();
                 Log.d("RESULT", String.valueOf(fb[0]));
                 Log.d("RESULT", "Alzheimer's ^");
+                prediction.setAlzheimers(fb[0]);
                 if (fb[0] < 0.5) {
                     alzheimersRes.setText("😀");
                 }
                 else {
                     alzheimersRes.setText("😟");
                 }
+                database.getReference("Predictions").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).setValue(prediction).addOnCompleteListener(task -> {
+                    Log.d("TEST", "Stored in database");
+                });
                 interpreter.close();
                 input.clear();
                 output.clear();
@@ -164,6 +181,7 @@ public class MediPredict extends AppCompatActivity {
             }
         });
     }
+
 
 
     }
