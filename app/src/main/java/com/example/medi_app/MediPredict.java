@@ -81,7 +81,7 @@ public class MediPredict extends AppCompatActivity {
                 Log.d("RESULT", "Diabetes ^");
                 prediction.setDiabetes(fb[0]);
                 if (fb[0] < 0.5) {
-                    diabetesRes.setText("😁");
+                    diabetesRes.setText("😀");
                 }
                 else {
                     diabetesRes.setText("😟");
