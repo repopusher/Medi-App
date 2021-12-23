@@ -127,13 +127,13 @@ public class Insurance extends AppCompatActivity {
 
                 approval -> approval.getOrderActions().capture(result -> {
                     Log.i("CaptureOrder", String.format("CaptureOrderResult: %s", result));
-//
+
                     // Get Chosen MediCoin Amount
                     String radiovalue = ((RadioButton)findViewById(purchaseQuantityRadioGroup.getCheckedRadioButtonId())).getText().toString();
                     int selectedAmount = Integer.parseInt(radiovalue);
 
 
-//                    // Get user address
+                    // Get user address
                     String userAddress = userAddressField.getText().toString();
 
 
