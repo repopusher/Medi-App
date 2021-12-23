@@ -53,6 +53,8 @@ public class MediPredict extends AppCompatActivity {
 
     }
 
+    //Each AI method downloads the latest version of their respective model and passes the form data to get the result.
+    //It then displays an emoji based on result.
     public void diabetesAi(float[] userData) {
         CustomModelDownloadConditions conditions = new CustomModelDownloadConditions.Builder().requireWifi().build();
         FirebaseModelDownloader.getInstance().getModel("DiabetesAi", DownloadType.LATEST_MODEL, conditions).addOnSuccessListener(model -> {
